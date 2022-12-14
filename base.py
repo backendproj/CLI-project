@@ -1,15 +1,29 @@
-# Mirafzal va Xolmirza
-
-# Umumiy table -> UsersTable
-# 
-
-class Base:
-
-    def create_table(self, table_name : str):
-        pass
+from sqlite3 import connect
 
 
-db = Base()
+test = connect('USERS.db')
+cursor = test.cursor()
 
-db.create_table(login)
+# cursor.execute('''
+#      CREATE TABLE users(
+#          FISH TEXT,
+#          email TEXT,
+#          tel INT
+#      );
+#  ''')
+
+cursor.execute('''
+    INSERT INTO users VALUES(
+        'Bakhodirov Mirafzal',
+        'mirafzaaal2698@gmail.com',
+        '942182609'
+    );
+''')
+
+# cursor.execute('''
+#     SELECT email FROM users;
+# ''')
+# print(cursor.fetchall())
+test.commit()
+test.close()
 
